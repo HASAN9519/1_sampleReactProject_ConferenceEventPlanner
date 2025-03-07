@@ -13,8 +13,11 @@ npm install
 earlier>>>   "preview": "vite build; vite preview --host"
 now>>>>      "preview": "vite build && vite preview --host"
 
-## running the application
+### running the application, after every change need to run this command, recommended to use when app needs no change  
 npm run preview
+
+### command to run app when app is running on development, every changes automatically reflects on running app 
+npm run dev
 
 ### linking project with my github
 ### first create github repo without readme file

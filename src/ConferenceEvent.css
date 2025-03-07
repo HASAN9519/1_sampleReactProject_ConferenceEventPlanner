@@ -265,12 +265,12 @@
   }
   .nav_links{
     display: flex;
-    gap: 170px;
+    gap: 100px;
   }
   .left_navbar{
     width: 60vw;
     display: flex;
-    gap: 180px;
+    gap: 100px;
   
   }
   .nav_links a {
