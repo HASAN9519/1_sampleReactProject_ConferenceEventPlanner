@@ -31,7 +31,7 @@ git commit -m "initial commit"
 git branch -M main
 
 ### linking project with created github repo 
-git remote add origin https://github.com/HASAN9519/1_sampleReactProject.git
+git remote add origin https://github.com/HASAN9519/1_sampleReactProject_ConferenceEventPlanner.git
 
 git push -u origin main
 
