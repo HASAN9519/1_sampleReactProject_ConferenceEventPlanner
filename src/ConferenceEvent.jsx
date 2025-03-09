@@ -195,30 +195,47 @@ const ConferenceEvent = () => {
                         </button>
                     </div>
                 </navbar>
-                <div className="main_container">
-                    {!showItems
-                        ?
-                        (
-                            <div className="items-information">
-                                <div id="venue" className="venue_container container_main">
-                      <div className="text">
-              
-                        <h1>Venue Room Selection</h1>
-                      </div>
-            <div className="venue_selection">
-              {venueItems.map((item, index) => (
-                <div className="venue_main" key={index}>
-                  <div className="img">
-                    <img src={item.img} alt={item.name} />
-                  </div>
-                  <div className="text">{item.name}</div>
-                  <div>${item.cost}</div>
-            <div className="button_container">
-                            {venueItems[index].name === "Auditorium Hall (Capacity:200)" ? (
+<div className="main_container">
+        {!showItems
+            ?
+            (
+    <div className="items-information">
+        <div id="venue" className="venue_container container_main">
+                                      <div className="text">
+                                        <h1>Venue Room Selection</h1>
+                                      </div>
+                                      <div className="venue_selection">
+            {venueItems.map((item, index) => (
+                                          <div className="venue_main" key={index}>
+                                            <div className="img">
+                                              <img src={item.img} alt={item.name} />
+                                            </div>
+                                            <div className="text">{item.name}</div>
+                                            <div>${item.cost}</div>
+                <div className="button_container">
+                              {venueItems[index].name === "Auditorium Hall (Capacity:200)" ? (
 
-                              <>
-                              <button
-                                className={venueItems[index].quantity === 0 ? "btn-warning btn-disabled" : "btn-minus btn-warning"}
+                                <>
+                                <button
+                                  className={venueItems[index].quantity === 0 ? "btn-warning btn-disabled" : "btn-minus btn-warning"}
+                                  onClick={() => handleRemoveFromCart(index)}
+                                >
+                                  &#8211;
+                                </button>
+                                <span className="selected_count">
+                                  {venueItems[index].quantity > 0 ? ` ${venueItems[index].quantity}` : "0"}
+                                </span>
+                                <button
+                                  className={remainingAuditoriumQuantity === 0? "btn-success btn-disabled" : "btn-success btn-plus"}
+                                  onClick={() => handleAddToCart(index)}
+                                >
+                                  &#43;
+                                </button>
+                                </>
+                          ) : (
+                            <div className="button_container">
+                            <button
+                                className={venueItems[index].quantity ===0 ? " btn-warning btn-disabled" : "btn-warning btn-plus"}
                                 onClick={() => handleRemoveFromCart(index)}
                               >
                                 &#8211;
@@ -227,39 +244,21 @@ const ConferenceEvent = () => {
                                 {venueItems[index].quantity > 0 ? ` ${venueItems[index].quantity}` : "0"}
                               </span>
                               <button
-                                className={remainingAuditoriumQuantity === 0? "btn-success btn-disabled" : "btn-success btn-plus"}
+                                className={venueItems[index].quantity === 10 ? " btn-success btn-disabled" : "btn-success btn-plus"}
                                 onClick={() => handleAddToCart(index)}
                               >
-                                &#43;
+                              &#43;
                               </button>
-                      </>
-                        ) : (
-                          <div className="button_container">
-                          <button
-                              className={venueItems[index].quantity ===0 ? " btn-warning btn-disabled" : "btn-warning btn-plus"}
-                              onClick={() => handleRemoveFromCart(index)}
-                            >
-                              &#8211;
-                            </button>
-                            <span className="selected_count">
-                              {venueItems[index].quantity > 0 ? ` ${venueItems[index].quantity}` : "0"}
-                            </span>
-                            <button
-                              className={venueItems[index].quantity === 10 ? " btn-success btn-disabled" : "btn-success btn-plus"}
-                              onClick={() => handleAddToCart(index)}
-                            >
-                            &#43;
-                            </button>
-                            
-                            
-                        </div>
-                      )}
-              </div>
-                    </div>
-                  ))}
+                              
+                              
+                          </div>
+                        )}
+                </div>
+                      </div>
+            ))}
+          </div>
+                              <div className="total_cost">Total Cost: ${venueTotalCost}</div>
         </div>
-        <div className="total_cost">Total Cost: ${venueTotalCost}</div>
-      </div>
 
                             {/*Necessary Add-ons*/}
                             <div id="addons" className="venue_container container_main">
@@ -334,7 +333,9 @@ const ConferenceEvent = () => {
                                 <div className="total_cost">Total Cost: {mealsTotalCost}</div>
 
                             </div>
-                        </div>
+
+
+    </div>
                     ) : (
                         // TotalCost component renders inside a <div> element with the class name total_amount_detail. TotalCost component receives the props totalCosts and ItemsDisplay. totalCosts prop contains cost data and ItemsDisplay() component with items is passed as props to the TotalCost component
                         <div className ="total_amount_detail">
@@ -346,7 +347,7 @@ const ConferenceEvent = () => {
 
 
 
-            </div>
+</div>
         </>
 
     );
